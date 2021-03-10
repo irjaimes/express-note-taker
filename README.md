@@ -12,7 +12,7 @@ Previously saved notes will be displayed on the left column and can deleted by c
 Clone the repository to your local development environment.
 
 git clone https://github.com/irjaimes/express-note-taker.git
-Navigate to the developer-profile-generator folder using the command prompt.
+Navigate to the express-note-taker folder using the command prompt.
 
 Run npm install to install all dependencies. To use the application locally, run node server.js in your CLI, and then open http://localhost:3000 in your preferred browswer. 
 
