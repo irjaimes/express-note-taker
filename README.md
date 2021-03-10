@@ -16,8 +16,9 @@ Navigate to the developer-profile-generator folder using the command prompt.
 
 Run npm install to install all dependencies. To use the application locally, run node server.js in your CLI, and then open http://localhost:3000 in your preferred browswer. 
 
-### Deployed Application: <https://express-notetkr.herokuapp.com/>
-### Screenshot
+### Deployed Application: <https://xprss-notetkr.herokuapp.com/>
+### Screenshot 
+![](./public/assets/images/screenshot.png)
 
 ## Routes Implemented:
 #### HTML routes:
