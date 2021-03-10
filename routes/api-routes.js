@@ -8,7 +8,7 @@ module.exports = (app) => {
     fs.readFile("db/db.json", "utf8", (err, data) => {
         if (err) throw err;
 
-        var notes = JSON.parse(data);
+        let notes = JSON.parse(data);
         //console.log(data);
 
         // =======================================================
@@ -21,12 +21,27 @@ module.exports = (app) => {
         });
 
         // POST route to post new notes
-        app.post("/api/notes", function(req, res) {
-            // Receives a new note, adds it to db.json, then returns the new note
+        // app.post("/api/notes", function(req, res) {
+        //     // Receives a new note, adds it to db.json, then returns the new note
+        //     let newNote = req.body;
+        //     notes.push(newNote);
+        //     updateDb();
+        //     console.log(`Added new note: ${newNote.title}`);
+        // });
+
+        app.post("/api/notes", function (req, res) {
             let newNote = req.body;
-            notes.push(newNote);
-            updateDb();
-            console.log(`Added new note: ${newNote.title}`);
+            // validate note
+            if(!validateNote(newNote)){
+                res.status(400).send('Please provide note title and text description')
+            }
+            else{
+                notes.push(newNote);
+                updateDb();
+                res.json(notes)
+                // return new note obj
+                console.log(`Added new note: ${newNote.title}`);
+            }
         });
 
         // GET route for specific note by id
@@ -40,20 +55,22 @@ module.exports = (app) => {
             // remove the selected note from db.json
             notes.splice(req.params.id, 1);
             updateDb();
+            res.json(notes)
             console.log(`Deleted note with id ${req.params.id}`);
         });
 
         // =======================================================
         
-        // GET requests to serve HTML
-        app.get('/notes', function(req,res) {
-            res.sendFile(path.join(__dirname, "../public/notes.html"));
-        });
-        
-        // Display index.html when all other routes are accessed
-        app.get('*', function(req,res) {
-            res.sendFile(path.join(__dirname, "../public/index.html"));
-        });
+        // Validate new note
+        function validateNote(note) {
+            if(!note.title || typeof note.title !== 'string'){
+                return false;
+            }
+            if(!note.text || typeof note.text !== 'string'){
+                return false;
+            }
+            return true;
+        }
 
         // Update db.json whenever note is created or deleted
         function updateDb() {

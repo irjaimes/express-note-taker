@@ -1,13 +1,14 @@
 [
   {
-    "title": "Test Title",
-    "text": "Test text"
+    "title": "Monday",
+    "text": "Doctor's appointment @ 9:00am"
   },
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {}
+  {
+    "title": "Monday",
+    "text": "Dinner with Jill @ 9:00pm"
+  },
+  {
+    "title": "Tuesday",
+    "text": "Bank closes early @ 12pm"
+  }
 ]
