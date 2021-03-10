@@ -1,13 +1,1 @@
-[
-  {
-    "title": "Test Title",
-    "text": "Test text"
-  },
-  {},
-  {},
-  {
-    "title": "new notes",
-    "text": "get route is working"
-  },
-  {}
-]
+[{"title":"Test Title","text":"Test text"},{},{},{},{},{},{}]
