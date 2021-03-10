@@ -21,14 +21,6 @@ module.exports = (app) => {
         });
 
         // POST route to post new notes
-        // app.post("/api/notes", function(req, res) {
-        //     // Receives a new note, adds it to db.json, then returns the new note
-        //     let newNote = req.body;
-        //     notes.push(newNote);
-        //     updateDb();
-        //     console.log(`Added new note: ${newNote.title}`);
-        // });
-
         app.post("/api/notes", function (req, res) {
             let newNote = req.body;
             // validate note
@@ -37,8 +29,9 @@ module.exports = (app) => {
             }
             else{
                 notes.push(newNote);
-                updateDb();
                 res.json(notes)
+                updateDb();
+                
                 // return new note obj
                 console.log(`Added new note: ${newNote.title}`);
             }
@@ -74,7 +67,7 @@ module.exports = (app) => {
 
         // Update db.json whenever note is created or deleted
         function updateDb() {
-            fs.writeFile("db/db.json",JSON.stringify(notes, null, 2),err => {
+            fs.writeFile("db/db.json",JSON.stringify(notes, null, 2), err => {
                 if (err) throw err;
                 return true;
             });
