@@ -11,6 +11,8 @@ module.exports = (app) => {
         var notes = JSON.parse(data);
         //console.log(data);
 
+        // =======================================================
+
         // GET route to get api/notes
         app.get("/api/notes", function (req, res) {
             // read and get the db.json file with saved notes as JSON.
